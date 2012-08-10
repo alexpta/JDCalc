@@ -10,8 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp" 
-        android:calendarViewShown="false"
-        android:minDate="01/01/0001"/>
+        android:calendarViewShown="false"/>
 
     <TextView
         android:id="@+id/textView1"
