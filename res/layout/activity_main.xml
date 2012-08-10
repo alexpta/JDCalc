@@ -3,13 +3,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView android:id="@+id/txtView"
+    <DatePicker
+        android:id="@+id/datePicker1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="70dp" 
+        android:calendarViewShown="false"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/datePicker1"
+        android:text="@string/date" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/datePicker1"
+        android:layout_marginTop="18dp"
+        android:onClick="setToday"
+        android:text="@string/today_date" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="calculateJDN"
+        android:text="@string/calculate" />
+
+    <TextView
+        android:id="@+id/txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="34dp"
         android:padding="@dimen/padding_medium"
-        android:text="@string/hello_string"
+        android:text="@string/jdn"
         tools:context=".MainActivity" />
+
+    <EditText
+        android:id="@+id/outView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtView"
+        android:layout_toRightOf="@+id/button1"
+        android:ems="10"
+        android:inputType="number"
+        android:lines="1"
+        android:maxLines="1" />
 
 </RelativeLayout>

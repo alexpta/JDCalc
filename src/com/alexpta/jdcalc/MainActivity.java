@@ -1,24 +1,27 @@
 package com.alexpta.jdcalc;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import com.alexpta.jdcalc.R;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
+	
+	private DatePicker datePicker;
+	private EditText outView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView txt = (TextView)findViewById(R.id.txtView);
-        long jdn = getJDN(new Date());
-        txt.setText("Today JDN=" + jdn);
+        outView = (EditText)findViewById(R.id.outView);
+        datePicker = (DatePicker)findViewById(R.id.datePicker1);
     }
 
     @Override
@@ -27,12 +30,7 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    private long getJDN(Date date) {
-    	Calendar cal = Calendar.getInstance();
-    	cal.setTime(date);
-    	int year = cal.get(Calendar.YEAR);
-    	int month = cal.get(Calendar.MONTH) + 1;
-    	int day = cal.get(Calendar.DATE);
+    private long getJDN(int year, int month, int day) {
     	long a = (14 - month)/12;
     	long y = year + 4800 - a;
     	long m = month + 12 * a - 3;
@@ -41,5 +39,21 @@ public class MainActivity extends Activity {
     	return jdn;
     }
 
+    public void setToday(View view) {
+    	Calendar cal = Calendar.getInstance();
+    	int year = cal.get(Calendar.YEAR);
+    	int month = cal.get(Calendar.MONTH);
+    	int day = cal.get(Calendar.DATE);
+    	datePicker.updateDate(year, month, day);
+    }
+    
+    public void calculateJDN(View view) {
+    	int year = datePicker.getYear();
+    	int month = datePicker.getMonth() + 1;
+    	int day = datePicker.getDayOfMonth();
+    	System.out.println(year + "/" + month + "/" + day);
+    	long jdn = getJDN(year, month, day);
+    	outView.setText("" + jdn);
+    }
     
 }
