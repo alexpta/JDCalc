@@ -6,12 +6,15 @@ import com.alexpta.jdcalc.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 public class MainActivity extends Activity {
+	
+	private static final String LOG_TAG = "JDCALC";
 	
 	private DatePicker datePicker;
 	private EditText outView;
@@ -51,7 +54,7 @@ public class MainActivity extends Activity {
     	int year = datePicker.getYear();
     	int month = datePicker.getMonth() + 1;
     	int day = datePicker.getDayOfMonth();
-    	System.out.println(year + "/" + month + "/" + day);
+    	Log.d(LOG_TAG, year + "/" + month + "/" + day);
     	long jdn = getJDN(year, month, day);
     	outView.setText("" + jdn);
     }
