@@ -82,6 +82,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
     		builder.setMessage(R.string.invalid_date)
     		       .setCancelable(true)
+    		       .setTitle(R.string.error_dlg_title)
     		       .setNeutralButton("OK", new DialogInterface.OnClickListener() {
     		           public void onClick(DialogInterface dialog, int id) {
     		                dialog.cancel();
