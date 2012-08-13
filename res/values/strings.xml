@@ -7,4 +7,6 @@
     <string name="today_date">Today</string>
     <string name="calculate">Calculate</string>
     <string name="jdn">JDN</string>
+    <string name="invalid_date">Invalid date!</string>
+    <string name="calendar">Pick</string>
 </resources>
