@@ -1,12 +1,12 @@
 <resources>
 
-    <string name="app_name">Julian Date Calculator</string>
+    <string name="app_name">Julian Day Calculator</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">Julian Date Calculator</string>
+    <string name="title_activity_main">Julian Day Calculator</string>
     <string name="date">Date</string>
     <string name="today_date">Today</string>
     <string name="calculate">Calculate</string>
-    <string name="jdn">JDN</string>
+    <string name="jdn">Julian Day (JDN)</string>
     <string name="invalid_date">Invalid date!</string>
     <string name="calendar">Pick</string>
     <string name="error_dlg_title">Error</string>
