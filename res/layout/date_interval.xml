@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent" 
+              android:orientation="vertical" >
+
+<RelativeLayout android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+      
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="@string/from_date" />
+
+    <EditText
+        android:id="@+id/fromTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textView1"
+        android:ems="10"
+        android:inputType="date" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/pickButton1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/fromTxt"
+        android:onClick="showFromDatePicker"
+        android:contentDescription="@string/calendar"
+        android:src="@drawable/calendar" />
+
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="@string/to_date" />
+
+    <EditText
+        android:id="@+id/toTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/textView2"
+        android:ems="10"
+        android:inputType="date" />
+
+    <ImageButton
+        android:id="@+id/pickButton2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/toTxt"
+        android:onClick="showToDatePicker"
+        android:contentDescription="@string/calendar"
+        android:src="@drawable/calendar" />
+
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+    
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="subtract"
+        android:text="@string/calculate" />
+
+</RelativeLayout>
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/outText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/outText"
+        android:text="@string/days"
+        android:layout_centerVertical="true"
+         />
+
+</RelativeLayout>
+  
+</LinearLayout>

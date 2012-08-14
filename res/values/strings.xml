@@ -7,7 +7,16 @@
     <string name="today_date">Today</string>
     <string name="calculate">Calculate</string>
     <string name="jdn">Julian Day (JDN)</string>
+    <string name="jdn_calc">Julian Day (JDN) Calculator</string>
+    <string name="date_interval">Date Interval Calculator</string>
     <string name="invalid_date">Invalid date!</string>
+    <string name="invalid_from_date">Invalid From Date!</string>
+    <string name="invalid_to_date">Invalid to Date!</string>
     <string name="calendar">Pick</string>
     <string name="error_dlg_title">Error</string>
+    <string name="days">days</string>
+    <string name="title_activity_date_interval">Date Interval Calculator</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    
 </resources>

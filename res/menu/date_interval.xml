@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/date_interval"
-        android:title="@string/date_interval"
+    <item android:id="@+id/jdn_calc"
+        android:title="@string/jdn_calc"
         android:orderInCategory="100"
         android:showAsAction="never" />
 </menu>

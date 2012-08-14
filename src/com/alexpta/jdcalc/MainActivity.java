@@ -11,20 +11,23 @@ import com.alexpta.jdcalc.R;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
 public class MainActivity extends FragmentActivity implements DatePickerClient {
 	
-	private static final String TAG = "JDCALC";
+	private static final String TAG = "JDCALC.MainActivity";
 	
 	private EditText outView;
 	private DateFormat df;
 	private EditText dateTxt;
+	private JDCalculator jdcalc;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
         outView = (EditText)findViewById(R.id.outText);
         dateTxt = (EditText)findViewById(R.id.dateTxt);
         df = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+        jdcalc = new JDCalculator();
         today();
     }
 
@@ -42,15 +46,6 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
         return true;
     }
     
-    private long getJDN(int year, int month, int day) {
-    	long a = (14 - month)/12;
-    	long y = year + 4800 - a;
-    	long m = month + 12 * a - 3;
-    	//System.out.println("a=" + a + ", y=" + y + ", m=" + m);
-    	long jdn = day + (153 * m + 2) / 5 + 365 * y + y / 4 - y / 100 + y / 400 - 32045;
-    	return jdn;
-    }
-
     public void setToday(View view) {
     	today();
     }
@@ -74,7 +69,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
         	int month = cal.get(Calendar.MONTH);
         	int day = cal.get(Calendar.DATE);
         	Log.d(TAG, year + "/" + month + "/" + day);
-        	long jdn = getJDN(year, month, day);
+        	long jdn = jdcalc.getJDN(year, month, day);
         	outView.setText("" + jdn);
     	}
     	catch(ParseException exc) {
@@ -109,4 +104,16 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     	dateTxt.setText(date);
 		calculate();
 	}
+	
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.date_interval:
+            	Intent intent = new Intent(this, DateIntervalActivity.class);
+            	startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
