@@ -38,6 +38,11 @@ public class DateIntervalActivity extends FragmentActivity {
         outTxt = (EditText)findViewById(R.id.outText);
         df = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         jdcalc = new JDCalculator();
+        
+        // set today date
+		Calendar cal = Calendar.getInstance();
+    	fromTxt.setText(df.format(cal.getTime()));
+    	toTxt.setText(df.format(cal.getTime()));
     }
 
     @Override
