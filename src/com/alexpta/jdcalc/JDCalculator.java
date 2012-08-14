@@ -1,5 +1,9 @@
 package com.alexpta.jdcalc;
 
+import java.util.Calendar;
+import java.util.Date;
+
+
 public class JDCalculator {
 
 	public long getJDN(int year, int month, int day) {
@@ -11,4 +15,13 @@ public class JDCalculator {
     	return jdn;
     }
 
+	public long getJDN(Date date) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+    	int year = cal.get(Calendar.YEAR);
+    	int month = cal.get(Calendar.MONTH);
+    	int day = cal.get(Calendar.DATE);
+    	 return getJDN(year, month, day);
+		
+	}
 }

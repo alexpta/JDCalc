@@ -63,13 +63,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 	private void calculate() {
 		try {
     		Date date = df.parse(dateTxt.getText().toString());
-    		Calendar cal = Calendar.getInstance();
-    		cal.setTime(date);
-        	int year = cal.get(Calendar.YEAR);
-        	int month = cal.get(Calendar.MONTH);
-        	int day = cal.get(Calendar.DATE);
-        	Log.d(TAG, year + "/" + month + "/" + day);
-        	long jdn = jdcalc.getJDN(year, month, day);
+        	long jdn = jdcalc.getJDN(date);
         	outView.setText("" + jdn);
     	}
     	catch(ParseException exc) {

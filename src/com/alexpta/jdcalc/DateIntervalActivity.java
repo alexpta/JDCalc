@@ -51,13 +51,7 @@ public class DateIntervalActivity extends FragmentActivity {
     	long jdn1 = 0;
 		try {
     		Date date = df.parse(fromTxt.getText().toString());
-    		Calendar cal = Calendar.getInstance();
-    		cal.setTime(date);
-        	int year = cal.get(Calendar.YEAR);
-        	int month = cal.get(Calendar.MONTH);
-        	int day = cal.get(Calendar.DATE);
-        	Log.d(TAG, year + "/" + month + "/" + day);
-        	jdn0 = jdcalc.getJDN(year, month, day);
+        	jdn0 = jdcalc.getJDN(date);
     	}
     	catch(ParseException exc) {
     		Log.d(TAG, "invalid date!!!");
@@ -77,13 +71,7 @@ public class DateIntervalActivity extends FragmentActivity {
     	
 		try {
     		Date date = df.parse(toTxt.getText().toString());
-    		Calendar cal = Calendar.getInstance();
-    		cal.setTime(date);
-        	int year = cal.get(Calendar.YEAR);
-        	int month = cal.get(Calendar.MONTH);
-        	int day = cal.get(Calendar.DATE);
-        	Log.d(TAG, year + "/" + month + "/" + day);
-        	jdn1 = jdcalc.getJDN(year, month, day);
+        	jdn1 = jdcalc.getJDN(date);
         	long diff = Math.abs(jdn1 - jdn0);
         	outTxt.setText("" + diff);
     	}
