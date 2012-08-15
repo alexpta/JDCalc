@@ -2,5 +2,5 @@ Julian Day Calculator for Android
 About Julian Day please see: http://en.wikipedia.org/wiki/Julian_day
 
 This application calculates Julian Day Number (JDN) for entered date. Also it 
-can calculate a difference between two calendar dates. Dates can be in 
-Gregorian and Julian calendars  
+can calculate a difference in days between two calendar dates. Dates can be in 
+Gregorian or Julian calendar.
