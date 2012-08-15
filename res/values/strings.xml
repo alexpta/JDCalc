@@ -19,5 +19,6 @@
     <string name="from_date">From Date</string>
     <string name="to_date">To Date</string>
     <string name="bc_label">BC</string>
+    <string name="jc_label">Date in Julian Calendar</string>
     
 </resources>

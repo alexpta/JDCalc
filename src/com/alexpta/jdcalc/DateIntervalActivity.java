@@ -31,6 +31,8 @@ public class DateIntervalActivity extends FragmentActivity {
 	private JDCalculator jdcalc;
 	private CheckBox bcFrom;
 	private CheckBox bcTo;
+	private CheckBox jcFrom;
+	private CheckBox jcTo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class DateIntervalActivity extends FragmentActivity {
         jdcalc = new JDCalculator();
         bcFrom = (CheckBox)findViewById(R.id.bcFrom);
         bcTo = (CheckBox)findViewById(R.id.bcTo);
+        jcFrom = (CheckBox)findViewById(R.id.jcFrom);
+        jcTo = (CheckBox)findViewById(R.id.jcTo);
         // set today date
 		Calendar cal = Calendar.getInstance();
     	fromTxt.setText(df.format(cal.getTime()));
@@ -60,7 +64,7 @@ public class DateIntervalActivity extends FragmentActivity {
     	long jdn1 = 0;
 		try {
     		Date date = df.parse(fromTxt.getText().toString());
-        	jdn0 = jdcalc.getJDN(date, bcFrom.isChecked());
+        	jdn0 = jdcalc.getJDN(date, bcFrom.isChecked(), jcFrom.isChecked());
     	}
     	catch(ParseException exc) {
     		Log.d(TAG, "invalid date!!!");
@@ -80,7 +84,7 @@ public class DateIntervalActivity extends FragmentActivity {
     	
 		try {
     		Date date = df.parse(toTxt.getText().toString());
-        	jdn1 = jdcalc.getJDN(date, bcTo.isChecked());
+        	jdn1 = jdcalc.getJDN(date, bcTo.isChecked(), jcTo.isChecked());
         	long diff = Math.abs(jdn1 - jdn0);
         	outTxt.setText("" + diff);
     	}

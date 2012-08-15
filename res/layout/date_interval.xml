@@ -48,6 +48,18 @@
 
 </RelativeLayout>   
 
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/jcFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/jc_label" />
+
+</RelativeLayout>   
+
 <RelativeLayout android:layout_width="wrap_content"
       android:layout_height="wrap_content">
     
@@ -87,6 +99,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:text="@string/bc_label" />
+
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/jcTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/jc_label" />
 
 </RelativeLayout>   
 

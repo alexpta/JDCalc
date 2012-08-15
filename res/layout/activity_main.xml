@@ -45,7 +45,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="@string/bc_label" />
+        android:text="@string/bc_label"
+        android:onClick="calculateJDN" />
+
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/jcChkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/jc_label" 
+        android:onClick="calculateJDN" />
 
 </RelativeLayout>   
 
