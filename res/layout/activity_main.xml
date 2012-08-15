@@ -39,6 +39,18 @@
 
 <RelativeLayout android:layout_width="fill_parent"
       android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/bcChkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/bc_label" />
+
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"

@@ -6,7 +6,10 @@ import java.util.Date;
 
 public class JDCalculator {
 
-	public long getJDN(int year, int month, int day) {
+	public long getJDN(int year, int month, int day, boolean bc) {
+		if(bc) {
+			year = -(year - 1);
+		}
     	long a = (14 - month)/12;
     	long y = year + 4800 - a;
     	long m = month + 12 * a - 3;
@@ -15,13 +18,17 @@ public class JDCalculator {
     	return jdn;
     }
 
-	public long getJDN(Date date) {
+	public long getJDN(Date date, boolean bc) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
     	int year = cal.get(Calendar.YEAR);
     	int month = cal.get(Calendar.MONTH);
     	int day = cal.get(Calendar.DATE);
-    	 return getJDN(year, month, day);
+    	 return getJDN(year, month, day, bc);
 		
+	}
+
+	public long getJDN(Date date) {
+		return getJDN(date, false);
 	}
 }

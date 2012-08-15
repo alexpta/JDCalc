@@ -36,6 +36,18 @@
 
 </RelativeLayout>   
 
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/bcFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/bc_label" />
+
+</RelativeLayout>   
+
 <RelativeLayout android:layout_width="wrap_content"
       android:layout_height="wrap_content">
     
@@ -63,6 +75,18 @@
         android:onClick="showToDatePicker"
         android:contentDescription="@string/calendar"
         android:src="@drawable/calendar" />
+
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/bcTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/bc_label" />
 
 </RelativeLayout>   
 

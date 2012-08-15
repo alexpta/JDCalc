@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class MainActivity extends FragmentActivity implements DatePickerClient {
@@ -28,6 +29,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 	private DateFormat df;
 	private EditText dateTxt;
 	private JDCalculator jdcalc;
+	private CheckBox bcChkBox;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
         setContentView(R.layout.activity_main);
         outView = (EditText)findViewById(R.id.outText);
         dateTxt = (EditText)findViewById(R.id.dateTxt);
+        bcChkBox = (CheckBox)findViewById(R.id.bcChkBox);
         df = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         jdcalc = new JDCalculator();
         today();
@@ -63,7 +66,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 	private void calculate() {
 		try {
     		Date date = df.parse(dateTxt.getText().toString());
-        	long jdn = jdcalc.getJDN(date);
+        	long jdn = jdcalc.getJDN(date, bcChkBox.isChecked());
         	outView.setText("" + jdn);
     	}
     	catch(ParseException exc) {

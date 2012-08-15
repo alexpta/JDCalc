@@ -18,5 +18,6 @@
     <string name="title_activity_date_interval">Date Interval Calculator</string>
     <string name="from_date">From Date</string>
     <string name="to_date">To Date</string>
+    <string name="bc_label">BC</string>
     
 </resources>

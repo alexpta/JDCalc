@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class DateIntervalActivity extends FragmentActivity {
@@ -28,6 +29,8 @@ public class DateIntervalActivity extends FragmentActivity {
 	private EditText outTxt;
 	private DateFormat df;
 	private JDCalculator jdcalc;
+	private CheckBox bcFrom;
+	private CheckBox bcTo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,8 @@ public class DateIntervalActivity extends FragmentActivity {
         outTxt = (EditText)findViewById(R.id.outText);
         df = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         jdcalc = new JDCalculator();
-        
+        bcFrom = (CheckBox)findViewById(R.id.bcFrom);
+        bcTo = (CheckBox)findViewById(R.id.bcTo);
         // set today date
 		Calendar cal = Calendar.getInstance();
     	fromTxt.setText(df.format(cal.getTime()));
@@ -56,7 +60,7 @@ public class DateIntervalActivity extends FragmentActivity {
     	long jdn1 = 0;
 		try {
     		Date date = df.parse(fromTxt.getText().toString());
-        	jdn0 = jdcalc.getJDN(date);
+        	jdn0 = jdcalc.getJDN(date, bcFrom.isChecked());
     	}
     	catch(ParseException exc) {
     		Log.d(TAG, "invalid date!!!");
@@ -76,7 +80,7 @@ public class DateIntervalActivity extends FragmentActivity {
     	
 		try {
     		Date date = df.parse(toTxt.getText().toString());
-        	jdn1 = jdcalc.getJDN(date);
+        	jdn1 = jdcalc.getJDN(date, bcTo.isChecked());
         	long diff = Math.abs(jdn1 - jdn0);
         	outTxt.setText("" + diff);
     	}
