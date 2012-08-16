@@ -25,17 +25,17 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 	
 	private static final String TAG = "JDCALC.MainActivity";
 	
-	private EditText outView;
-	private DateFormat df;
-	private EditText dateTxt;
-	private JDCalculator jdcalc;
-	private CheckBox bcChkBox;
-	private CheckBox jcChkBox;
+	protected EditText outView;
+	protected DateFormat df;
+	protected EditText dateTxt;
+	protected JDCalculator jdcalc;
+	protected CheckBox bcChkBox;
+	protected CheckBox jcChkBox;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        init();
         outView = (EditText)findViewById(R.id.outText);
         dateTxt = (EditText)findViewById(R.id.dateTxt);
         bcChkBox = (CheckBox)findViewById(R.id.bcChkBox);
@@ -43,6 +43,10 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
         df = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         jdcalc = new JDCalculator();
         today();
+    }
+    
+    protected void init() {
+    	setContentView(R.layout.activity_main);
     }
 
     @Override
@@ -65,7 +69,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     	calculate();
     }
 
-	private void calculate() {
+	protected void calculate() {
 		try {
     		Date date = df.parse(dateTxt.getText().toString());
         	long jdn = jdcalc.getJDN(date, bcChkBox.isChecked(), jcChkBox.isChecked());
@@ -110,6 +114,10 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
             case R.id.date_interval:
             	Intent intent = new Intent(this, DateIntervalActivity.class);
             	startActivity(intent);
+                return true;
+            case R.id.weekday_menu:
+            	Intent intent2 = new Intent(this, WeekDayActivity.class);
+            	startActivity(intent2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

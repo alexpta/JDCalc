@@ -3,8 +3,8 @@
         android:title="@string/jdn_calc"
         android:orderInCategory="100"
         android:showAsAction="never" />
-    <item android:id="@+id/weekday_menu"
-        android:title="@string/weekday_menu"
+    <item android:id="@+id/date_interval"
+        android:title="@string/date_interval"
         android:orderInCategory="100"
         android:showAsAction="never" />
 </menu>

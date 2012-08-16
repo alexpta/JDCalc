@@ -22,9 +22,10 @@ public class JDCalculator {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
     	int year = cal.get(Calendar.YEAR);
-    	int month = cal.get(Calendar.MONTH);
+    	int month = cal.get(Calendar.MONTH) + 1;
     	int day = cal.get(Calendar.DATE);
-    	 return getJDN(year, month, day, bc, jc);
+    	System.out.println(year + "/" + month + "/" + day);
+    	return getJDN(year, month, day, bc, jc);
 		
 	}
 

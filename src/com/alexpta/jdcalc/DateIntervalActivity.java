@@ -145,6 +145,10 @@ public class DateIntervalActivity extends FragmentActivity {
             	Intent intent = new Intent(this, MainActivity.class);
             	startActivity(intent);
                 return true;
+            case R.id.weekday_menu:
+            	Intent intent2 = new Intent(this, WeekDayActivity.class);
+            	startActivity(intent2);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

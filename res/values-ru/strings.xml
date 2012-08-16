@@ -19,5 +19,14 @@
     <string name="to_date">Вторая дата</string>
     <string name="bc_label">до Н.Э.</string>
     <string name="jc_label">дата по старому стилю</string>
-    
+    <string name="title_activity_week_day">День недели</string>
+    <string name="weekday">День недели:</string>
+    <string name="weekday_menu">День недели</string>
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>    
 </resources>
