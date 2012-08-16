@@ -83,6 +83,16 @@
         android:layout_toRightOf="@+id/button1"
         android:onClick="calculateJDN"
         android:text="@string/calculate" />
+
+    <Button
+        android:id="@+id/buttonReverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/button2"
+        android:onClick="reverseCalculate"
+        android:text="@string/reverse" />
 </RelativeLayout>
 
 <RelativeLayout android:layout_width="fill_parent"
@@ -101,7 +111,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/txtView"
-        android:focusable="false"
         android:ems="10"
         android:inputType="number"
         android:maxLines="1" />

@@ -5,6 +5,7 @@
     <string name="date">Date</string>
     <string name="today_date">Today</string>
     <string name="calculate">Calculate</string>
+    <string name="reverse">Reverse calculation</string>
     <string name="jdn">Julian Day (JDN)</string>
     <string name="jdn_calc">Julian Day (JDN) Calculator</string>
     <string name="date_interval">Date Interval Calculator</string>
@@ -17,7 +18,7 @@
     <string name="title_activity_date_interval">Date Interval Calculator</string>
     <string name="from_date">From Date</string>
     <string name="to_date">To Date</string>
-    <string name="bc_label">BC</string>
+    <string name="bc_label">BC era</string>
     <string name="jc_label">Date in Julian Calendar</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
