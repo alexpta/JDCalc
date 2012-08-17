@@ -37,4 +37,6 @@
     <string name="gregorian_date">Gregorian Date</string>
     <string name="julian_date">Julian Date</string>
     <string name="g2j_menu">Grigorian to Julian</string>
+    <string name="invalid_gregorian_date">Invalid Gregorian date!</string>
+    <string name="invalid_julian_date">Invalid Julian date!</string>
 </resources>

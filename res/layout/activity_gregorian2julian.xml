@@ -89,10 +89,7 @@
         android:ems="10"
         android:inputType="date" 
         android:lines="1"
-        android:maxLines="1" >
-
-        <requestFocus />
-    </EditText>
+        android:maxLines="1" />
     
     <ImageButton
         android:id="@+id/button4"

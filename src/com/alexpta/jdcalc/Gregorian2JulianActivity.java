@@ -42,6 +42,9 @@ public class Gregorian2JulianActivity extends FragmentActivity {
         jDateTxt = (EditText)findViewById(R.id.jdateTxt);
         bcGChkBox = (CheckBox)findViewById(R.id.bcGChkBox);
         bcJChkBox = (CheckBox)findViewById(R.id.bcJChkBox);
+		Calendar cal = Calendar.getInstance();
+    	gDateTxt.setText(df.format(cal.getTime()));
+    	g2jCalc();
     }
 
     @Override
@@ -125,9 +128,9 @@ public class Gregorian2JulianActivity extends FragmentActivity {
 			jDateTxt.setText(df.format(cal.getTime()));
     	}
     	catch(ParseException exc) {
-    		Log.d(TAG, "invalid date!!!");
+    		Log.d(TAG, "invalid gregorian date!!!");
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    		builder.setMessage(R.string.invalid_date)
+    		builder.setMessage(R.string.invalid_gregorian_date)
     		       .setCancelable(true)
     		       .setTitle(R.string.error_dlg_title)
     		       .setNeutralButton("OK", new DialogInterface.OnClickListener() {
@@ -151,9 +154,9 @@ public class Gregorian2JulianActivity extends FragmentActivity {
 			gDateTxt.setText(df.format(cal.getTime()));
     	}
     	catch(ParseException exc) {
-    		Log.d(TAG, "invalid date!!!");
+    		Log.d(TAG, "invalid julian date!!!");
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    		builder.setMessage(R.string.invalid_date)
+    		builder.setMessage(R.string.invalid_julian_date)
     		       .setCancelable(true)
     		       .setTitle(R.string.error_dlg_title)
     		       .setNeutralButton("OK", new DialogInterface.OnClickListener() {
