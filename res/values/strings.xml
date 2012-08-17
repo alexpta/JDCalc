@@ -33,4 +33,8 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
+    <string name="title_activity_gregorian2_julian">Gregorian to Julian</string>
+    <string name="gregorian_date">Gregorian Date</string>
+    <string name="julian_date">Julian Date</string>
+    <string name="g2j_menu">Grigorian to Julian</string>
 </resources>

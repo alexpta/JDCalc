@@ -120,6 +120,10 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
             	Intent intent2 = new Intent(this, WeekDayActivity.class);
             	startActivity(intent2);
                 return true;
+            case R.id.g2j_menu:
+            	Intent intent3 = new Intent(this, Gregorian2JulianActivity.class);
+            	startActivity(intent3);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

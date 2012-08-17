@@ -24,13 +24,19 @@
             android:name=".DateIntervalActivity"
             android:label="@string/title_activity_date_interval" >
             <intent-filter>
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".WeekDayActivity"
             android:label="@string/title_activity_week_day" >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Gregorian2JulianActivity"
+            android:label="@string/title_activity_gregorian2_julian" >
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />

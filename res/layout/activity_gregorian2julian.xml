@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent" 
+              android:orientation="vertical" >
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtGDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gregorian_date" 
+        android:layout_centerVertical="true" />
+
+    <EditText
+        android:id="@+id/gdateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/txtGDate"
+        android:ems="10"
+        android:inputType="date" 
+        android:lines="1"
+        android:maxLines="1" >
+
+        <requestFocus />
+    </EditText>
+    
+    <ImageButton
+        android:id="@+id/button3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/gdateTxt"
+        android:onClick="showGDatePicker"
+        android:contentDescription="@string/calendar"
+        android:src="@drawable/calendar" />
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/bcGChkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/bc_label"
+        android:onClick="calculate" />
+
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="calculate"
+        android:text="@string/calculate" />
+
+    <Button
+        android:id="@+id/buttonReverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:onClick="reverseCalculate"
+        android:text="@string/reverse" />
+</RelativeLayout>
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtJDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/julian_date" 
+        android:layout_centerVertical="true" />
+
+    <EditText
+        android:id="@+id/jdateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/txtJDate"
+        android:ems="10"
+        android:inputType="date" 
+        android:lines="1"
+        android:maxLines="1" >
+
+        <requestFocus />
+    </EditText>
+    
+    <ImageButton
+        android:id="@+id/button4"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/jdateTxt"
+        android:onClick="showJDatePicker"
+        android:contentDescription="@string/calendar"
+        android:src="@drawable/calendar" />
+</RelativeLayout>   
+
+<RelativeLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/bcJChkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/bc_label"
+        android:onClick="reverseCalculate" />
+
+</RelativeLayout>   
+
+</LinearLayout>
