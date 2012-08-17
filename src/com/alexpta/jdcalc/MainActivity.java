@@ -128,14 +128,14 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     public void reverseCalculate(View view) {
 		try {
 			Long jdn = Long.parseLong(outView.getText().toString());
-			Calendar cal = jdcalc.getDate(jdn);
+			Calendar cal = jdcalc.getDate(jdn, jcChkBox.isChecked());
 			Log.d(TAG, cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DATE));
 			Log.d(TAG, "BC? " + (GregorianCalendar.BC == cal.get(Calendar.ERA)));
 			bcChkBox.setChecked(GregorianCalendar.BC == cal.get(Calendar.ERA));
 			dateTxt.setText(df.format(cal.getTime()));
     	}
     	catch(NumberFormatException exc) {
-    		Log.d(TAG, "invalid date!!!");
+    		Log.d(TAG, "invalid JDN!!!");
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
     		builder.setMessage(R.string.invalid_date)
     		       .setCancelable(true)

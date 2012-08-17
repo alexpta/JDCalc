@@ -12,6 +12,7 @@
     <string name="invalid_date">Invalid date!</string>
     <string name="invalid_from_date">Invalid From Date!</string>
     <string name="invalid_to_date">Invalid to Date!</string>
+    <string name="invalid_jdn">Invalid Julian Day Number!</string>
     <string name="calendar">Pick</string>
     <string name="error_dlg_title">Error</string>
     <string name="days">days</string>

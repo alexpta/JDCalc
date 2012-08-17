@@ -34,27 +34,41 @@ public class JDCalculator {
 		return getJDN(date, false, false);
 	}
 	
-	public Calendar getDate(long JDN) {
-		long a = JDN + 32044;
-		long b = (4 * a + 3) / 146097;
-		long c = a - (146097 * b / 4);
-		long d = (4 * c  + 3) / 1461;
-		long e = c - 1461 * d / 4;
-		long m = (5 * e + 2) / 153;
-		int day = (int)(e - (153 * m + 2) / 5 + 1);
-		int month = (int)(m + 3 + 12 * (m / 10));
-		int year = (int)(100 * b + d - 4800 + m / 10);
+	public Calendar getDate(long JDN, boolean isJC) {
+		int year, month, day;
 		Calendar cal = Calendar.getInstance();
+		if(isJC) {
+			long c = JDN + 32082;
+			long d = (4 * c  + 3) / 1461;
+			long e = c - 1461 * d / 4;
+			long m = (5 * e + 2) / 153;
+			System.out.println("c=" + c + ", d=" + d + ", e=" + e + ", m=" + m);
+			day = (int)e - (int)((153 * m + 2) / 5) + 1;
+			month = (int)m + 3 - 12 * ((int)m / 10);
+			year = (int)d - 4800 + (int)m / 10;
+		}
+		else { // gregorian calendar
+			long a = JDN + 32044;
+			long b = (4 * a + 3) / 146097;
+			long c = a - (146097 * b / 4);
+			long d = (4 * c  + 3) / 1461;
+			long e = c - 1461 * d / 4;
+			long m = (5 * e + 2) / 153;
+			System.out.println("a=" + a + ", b=" + b + ", c=" + c + ", d=" + d + ", e=" + e + ", m=" + m);
+			day = (int)e - (int)((153 * m + 2) / 5) + 1;
+			month = (int)m + 3 - 12 * ((int)m / 10);
+			year = (int)(100 * b + d - 4800 + m / 10);
+		}
 		System.out.println(year + "/" + month + "/" + day);
 		if(year > 0) { 
 			cal.set(Calendar.YEAR, year);
 		}
-    	cal.set(Calendar.MONTH, month - 1);
-    	cal.set(Calendar.DATE, day);
-    	if(year < 0) {
-    		cal.set(Calendar.ERA, GregorianCalendar.BC);
-    		cal.set(Calendar.YEAR, -year + 1);
-    	}
+		cal.set(Calendar.MONTH, month - 1);
+		cal.set(Calendar.DATE, day);
+		if(year < 0) {
+			cal.set(Calendar.ERA, GregorianCalendar.BC);
+			cal.set(Calendar.YEAR, Math.abs(year) + 1);
+		}
     	return cal;
 	}
 }

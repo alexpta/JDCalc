@@ -12,6 +12,7 @@
     <string name="invalid_date">Неправильная дата!</string>
     <string name="invalid_from_date">Неправильная первая дата!</string>
     <string name="invalid_to_date">Неправильная вторая дата!</string>
+    <string name="invalid_jdn">Неправильный номер юлианского дня!</string>
     <string name="calendar">Выбрать</string>
     <string name="error_dlg_title">Ошибка</string>
     <string name="days">дней (дня)</string>
