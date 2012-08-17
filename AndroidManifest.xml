@@ -24,7 +24,6 @@
             android:name=".DateIntervalActivity"
             android:label="@string/title_activity_date_interval" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -33,7 +32,6 @@
             android:name=".WeekDayActivity"
             android:label="@string/title_activity_week_day" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
