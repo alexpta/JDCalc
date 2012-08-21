@@ -31,5 +31,10 @@
     <string name="friday">Пятница</string>
     <string name="saturday">Суббота</string>
     <string name="sunday">Воскресенье</string>
-        
+    <string name="title_activity_gregorian2_julian">Перевод дат из нового стилю в старый</string>
+    <string name="gregorian_date">По новому стилю (Григорианский)</string>
+    <string name="julian_date">По старому стилю (Юлианский)</string>
+    <string name="g2j_menu">Перевод дат из нового стилю в старый</string>
+    <string name="invalid_gregorian_date">Дата по новому стилю задана неверно!</string>
+    <string name="invalid_julian_date">Дата по старому стилю задана неверно!</string>
 </resources>
