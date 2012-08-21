@@ -5,4 +5,5 @@ This application has the next features:
 1) Julian Day Number (JDN) calculation for entered date and vice versa; 
 2) A difference in days between two calendar dates calculation;
 3) Weekday calculation for entered date.
+4) Convertion of Gregorian calendar date to Julian calendar and vice versa 
 Dates can be in Gregorian or Julian calendar.
