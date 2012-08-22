@@ -6,6 +6,15 @@ import java.util.GregorianCalendar;
 
 
 public class JDCalculator {
+	
+	private static final Calendar FAKE_GREGORIAN_START_DATE;
+	
+	static {
+		FAKE_GREGORIAN_START_DATE = Calendar.getInstance();
+		FAKE_GREGORIAN_START_DATE.set(Calendar.MONTH, 9);
+		FAKE_GREGORIAN_START_DATE.set(Calendar.YEAR, 1583);
+		FAKE_GREGORIAN_START_DATE.set(Calendar.DATE, 15);
+	}
 
 	public long getJDN(int year, int month, int day, boolean bc, boolean jc) {
 		if(bc) {
@@ -36,7 +45,7 @@ public class JDCalculator {
 	
 	public Calendar getDate(long JDN, boolean isJC) {
 		int year, month, day;
-		Calendar cal = Calendar.getInstance();
+		GregorianCalendar cal = new GregorianCalendar();
 		if(isJC) {
 			long c = JDN + 32082;
 			long d = (4 * c  + 3) / 1461;
@@ -60,12 +69,15 @@ public class JDCalculator {
 			year = (int)(100 * b + d - 4800 + m / 10);
 		}
 		System.out.println(year + "/" + month + "/" + day);
+		if(year == 1582 && (month == 9 || month == 10)) {
+			cal.setGregorianChange(FAKE_GREGORIAN_START_DATE.getTime());
+		}
 		if(year > 0) { 
 			cal.set(Calendar.YEAR, year);
 		}
 		cal.set(Calendar.MONTH, month - 1);
 		cal.set(Calendar.DATE, day);
-		if(year < 0) {
+		if(year <= 0) {
 			cal.set(Calendar.ERA, GregorianCalendar.BC);
 			cal.set(Calendar.YEAR, Math.abs(year) + 1);
 		}
