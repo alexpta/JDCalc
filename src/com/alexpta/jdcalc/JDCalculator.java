@@ -1,21 +1,10 @@
 package com.alexpta.jdcalc;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 
 public class JDCalculator {
 	
-	private static final Calendar FAKE_GREGORIAN_START_DATE;
-	
-	static {
-		FAKE_GREGORIAN_START_DATE = Calendar.getInstance();
-		FAKE_GREGORIAN_START_DATE.set(Calendar.MONTH, 9);
-		FAKE_GREGORIAN_START_DATE.set(Calendar.YEAR, 1583);
-		FAKE_GREGORIAN_START_DATE.set(Calendar.DATE, 15);
-	}
-
 	public long getJDN(int year, int month, int day, boolean bc, boolean jc) {
 		if(bc) {
 			year = -(year - 1);
@@ -28,7 +17,7 @@ public class JDCalculator {
     	return jdn;
     }
 
-	public long getJDN(Date date, boolean bc, boolean jc) {
+	public long getJDN(java.util.Date date, boolean bc, boolean jc) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
     	int year = cal.get(Calendar.YEAR);
@@ -39,13 +28,12 @@ public class JDCalculator {
 		
 	}
 
-	public long getJDN(Date date) {
+	public long getJDN(java.util.Date date) {
 		return getJDN(date, false, false);
 	}
 	
-	public Calendar getDate(long JDN, boolean isJC) {
+	public Date getDate(long JDN, boolean isJC) {
 		int year, month, day;
-		GregorianCalendar cal = new GregorianCalendar();
 		if(isJC) {
 			long c = JDN + 32082;
 			long d = (4 * c  + 3) / 1461;
@@ -69,18 +57,11 @@ public class JDCalculator {
 			year = (int)(100 * b + d - 4800 + m / 10);
 		}
 		System.out.println(year + "/" + month + "/" + day);
-		if(year == 1582 && (month == 9 || month == 10)) {
-			cal.setGregorianChange(FAKE_GREGORIAN_START_DATE.getTime());
-		}
-		if(year > 0) { 
-			cal.set(Calendar.YEAR, year);
-		}
-		cal.set(Calendar.MONTH, month - 1);
-		cal.set(Calendar.DATE, day);
+		Date date = new Date(year, month, day);
 		if(year <= 0) {
-			cal.set(Calendar.ERA, GregorianCalendar.BC);
-			cal.set(Calendar.YEAR, Math.abs(year) + 1);
+			date.setEra(Date.BC);
+			date.setYear(Math.abs(year) + 1);
 		}
-    	return cal;
+    	return date;
 	}
 }

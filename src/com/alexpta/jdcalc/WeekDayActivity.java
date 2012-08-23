@@ -1,8 +1,5 @@
 package com.alexpta.jdcalc;
 
-import java.text.ParseException;
-import java.util.Date;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -33,8 +30,10 @@ public class WeekDayActivity extends MainActivity {
     
 	protected void calculate() {
 		try {
-    		Date date = df.parse(dateTxt.getText().toString());
-        	long jdn = jdcalc.getJDN(date, bcChkBox.isChecked(), jcChkBox.isChecked());
+    		int year = Integer.parseInt(yearTxt.getText().toString());
+    		int month = Integer.parseInt(monthTxt.getText().toString());
+    		int day = Integer.parseInt(dayTxt.getText().toString());
+        	long jdn = jdcalc.getJDN(year, month, day, bcChkBox.isChecked(), jcChkBox.isChecked());
         	int weekday = (int)(jdn % 7);
         	String dayNumber = null;
         	Resources res = getResources();
@@ -63,7 +62,7 @@ public class WeekDayActivity extends MainActivity {
         	}
         	outView.setText(dayNumber);
     	}
-    	catch(ParseException exc) {
+    	catch(NumberFormatException exc) {
     		Log.d(TAG, "invalid date!!!");
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
     		builder.setMessage(R.string.invalid_date)

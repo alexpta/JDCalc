@@ -1,9 +1,6 @@
 package com.alexpta.jdcalc;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 
 import com.alexpta.android.dialogs.DatePickerClient;
 import com.alexpta.android.dialogs.DatePickerFragment;
@@ -24,24 +21,30 @@ public class DateIntervalActivity extends FragmentActivity {
 	
 	private static final String TAG = "JDCALC.DateIntervalActivity";
 
-	private EditText fromTxt;
-	private EditText toTxt;
 	private EditText outTxt;
-	private DateFormat df;
 	private JDCalculator jdcalc;
 	private CheckBox bcFrom;
 	private CheckBox bcTo;
 	private CheckBox jcFrom;
 	private CheckBox jcTo;
+	private EditText fromYear;
+	private EditText fromMonth;
+	private EditText fromDay;
+	private EditText toYear;
+	private EditText toMonth;
+	private EditText toDay;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_interval);
-        fromTxt = (EditText)findViewById(R.id.fromTxt);
-        toTxt = (EditText)findViewById(R.id.toTxt);
+        fromYear = (EditText)findViewById(R.id.fromYearTxt);
+        fromMonth = (EditText)findViewById(R.id.fromMonthTxt);
+        fromDay = (EditText)findViewById(R.id.fromDayTxt);
+        toYear = (EditText)findViewById(R.id.toYearTxt);
+        toMonth = (EditText)findViewById(R.id.toMonthTxt);
+        toDay = (EditText)findViewById(R.id.toDayTxt);
         outTxt = (EditText)findViewById(R.id.outText);
-        df = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         jdcalc = new JDCalculator();
         bcFrom = (CheckBox)findViewById(R.id.bcFrom);
         bcTo = (CheckBox)findViewById(R.id.bcTo);
@@ -49,8 +52,12 @@ public class DateIntervalActivity extends FragmentActivity {
         jcTo = (CheckBox)findViewById(R.id.jcTo);
         // set today date
 		Calendar cal = Calendar.getInstance();
-    	fromTxt.setText(df.format(cal.getTime()));
-    	toTxt.setText(df.format(cal.getTime()));
+    	fromYear.setText("" + cal.get(Calendar.YEAR));
+    	fromDay.setText("" + cal.get(Calendar.DATE));
+    	fromMonth.setText("" + (cal.get(Calendar.MONTH) + 1));
+    	toYear.setText("" + cal.get(Calendar.YEAR));
+    	toDay.setText("" + cal.get(Calendar.DATE));
+    	toMonth.setText("" + (cal.get(Calendar.MONTH) + 1));
     }
 
     @Override
@@ -63,10 +70,12 @@ public class DateIntervalActivity extends FragmentActivity {
     	long jdn0 = 0;
     	long jdn1 = 0;
 		try {
-    		Date date = df.parse(fromTxt.getText().toString());
-        	jdn0 = jdcalc.getJDN(date, bcFrom.isChecked(), jcFrom.isChecked());
+    		int year = Integer.parseInt(fromYear.getText().toString());
+    		int month = Integer.parseInt(fromMonth.getText().toString());
+    		int day = Integer.parseInt(fromDay.getText().toString());
+        	jdn0 = jdcalc.getJDN(year, month, day, bcFrom.isChecked(), jcFrom.isChecked());
     	}
-    	catch(ParseException exc) {
+    	catch(NumberFormatException exc) {
     		Log.d(TAG, "invalid date!!!");
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
     		builder.setMessage(R.string.invalid_from_date)
@@ -83,12 +92,14 @@ public class DateIntervalActivity extends FragmentActivity {
     	}
     	
 		try {
-    		Date date = df.parse(toTxt.getText().toString());
-        	jdn1 = jdcalc.getJDN(date, bcTo.isChecked(), jcTo.isChecked());
+    		int year = Integer.parseInt(toYear.getText().toString());
+    		int month = Integer.parseInt(toMonth.getText().toString());
+    		int day = Integer.parseInt(toDay.getText().toString());
+        	jdn1 = jdcalc.getJDN(year, month, day, bcTo.isChecked(), jcTo.isChecked());
         	long diff = Math.abs(jdn1 - jdn0);
         	outTxt.setText("" + diff);
     	}
-    	catch(ParseException exc) {
+    	catch(NumberFormatException exc) {
     		Log.d(TAG, "invalid date!!!");
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
     		builder.setMessage(R.string.invalid_to_date)
@@ -110,12 +121,9 @@ public class DateIntervalActivity extends FragmentActivity {
 			
 			@Override
 			public void setDate(int year, int month, int day) {
-				Calendar cal = Calendar.getInstance();
-		    	cal.set(Calendar.YEAR, year);
-		    	cal.set(Calendar.MONTH, month);
-		    	cal.set(Calendar.DATE, day);
-		    	String date = df.format(cal.getTime());
-		    	fromTxt.setText(date);
+		    	fromYear.setText("" + year);
+		    	fromDay.setText("" + day);
+		    	fromMonth.setText("" + (month + 1));
 			}
 		});
         newFragment.show(getSupportFragmentManager(), "datePicker");    	
@@ -127,12 +135,9 @@ public class DateIntervalActivity extends FragmentActivity {
 			
 			@Override
 			public void setDate(int year, int month, int day) {
-				Calendar cal = Calendar.getInstance();
-		    	cal.set(Calendar.YEAR, year);
-		    	cal.set(Calendar.MONTH, month);
-		    	cal.set(Calendar.DATE, day);
-		    	String date = df.format(cal.getTime());
-		    	toTxt.setText(date);
+		    	toYear.setText("" + year);
+		    	toDay.setText("" + day);
+		    	toMonth.setText("" + (month + 1));
 			}
 		});
         newFragment.show(getSupportFragmentManager(), "datePicker");    	

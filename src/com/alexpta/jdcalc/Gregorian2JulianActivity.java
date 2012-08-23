@@ -121,11 +121,11 @@ public class Gregorian2JulianActivity extends FragmentActivity {
 		try {
     		Date date = df.parse(gDateTxt.getText().toString());
         	long jdn = jdcalc.getJDN(date, bcGChkBox.isChecked(), false);
-        	Calendar cal = jdcalc.getDate(jdn, true);
-			Log.d(TAG, cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DATE));
-			Log.d(TAG, "BC? " + (GregorianCalendar.BC == cal.get(Calendar.ERA)));
-			bcJChkBox.setChecked(GregorianCalendar.BC == cal.get(Calendar.ERA));
-			jDateTxt.setText(df.format(cal.getTime()));
+//        	Calendar cal = jdcalc.getDate(jdn, true);
+//			Log.d(TAG, cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DATE));
+//			Log.d(TAG, "BC? " + (GregorianCalendar.BC == cal.get(Calendar.ERA)));
+//			bcJChkBox.setChecked(GregorianCalendar.BC == cal.get(Calendar.ERA));
+//			jDateTxt.setText(df.format(cal.getTime()));
     	}
     	catch(ParseException exc) {
     		Log.d(TAG, "invalid gregorian date!!!");
@@ -147,11 +147,11 @@ public class Gregorian2JulianActivity extends FragmentActivity {
 		try {
     		Date date = df.parse(jDateTxt.getText().toString());
         	long jdn = jdcalc.getJDN(date, bcJChkBox.isChecked(), true);
-        	Calendar cal = jdcalc.getDate(jdn, false);
-			Log.d(TAG, cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DATE));
-			Log.d(TAG, "BC? " + (GregorianCalendar.BC == cal.get(Calendar.ERA)));
-			bcGChkBox.setChecked(GregorianCalendar.BC == cal.get(Calendar.ERA));
-			gDateTxt.setText(df.format(cal.getTime()));
+//        	Calendar cal = jdcalc.getDate(jdn, false);
+//			Log.d(TAG, cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DATE));
+//			Log.d(TAG, "BC? " + (GregorianCalendar.BC == cal.get(Calendar.ERA)));
+//			bcGChkBox.setChecked(GregorianCalendar.BC == cal.get(Calendar.ERA));
+//			gDateTxt.setText(df.format(cal.getTime()));
     	}
     	catch(ParseException exc) {
     		Log.d(TAG, "invalid julian date!!!");

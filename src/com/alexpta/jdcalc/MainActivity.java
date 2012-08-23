@@ -1,10 +1,6 @@
 package com.alexpta.jdcalc;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import com.alexpta.android.dialogs.DatePickerClient;
 import com.alexpta.android.dialogs.DatePickerFragment;
@@ -27,21 +23,23 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 	private static final String TAG = "JDCALC.MainActivity";
 	
 	protected EditText outView;
-	protected DateFormat df;
-	protected EditText dateTxt;
 	protected JDCalculator jdcalc;
 	protected CheckBox bcChkBox;
 	protected CheckBox jcChkBox;
+	protected EditText yearTxt;
+	protected EditText monthTxt;
+	protected EditText dayTxt;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
         outView = (EditText)findViewById(R.id.outText);
-        dateTxt = (EditText)findViewById(R.id.dateTxt);
+        yearTxt = (EditText)findViewById(R.id.yearTxt);
+        monthTxt = (EditText)findViewById(R.id.monthTxt);
+        dayTxt = (EditText)findViewById(R.id.dayTxt);
         bcChkBox = (CheckBox)findViewById(R.id.bcChkBox);
         jcChkBox = (CheckBox)findViewById(R.id.jcChkBox);
-        df = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         jdcalc = new JDCalculator();
         today();
     }
@@ -62,7 +60,9 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 
 	private void today() {
 		Calendar cal = Calendar.getInstance();
-    	dateTxt.setText(df.format(cal.getTime()));
+    	yearTxt.setText("" + cal.get(Calendar.YEAR));
+    	dayTxt.setText("" + cal.get(Calendar.DATE));
+    	monthTxt.setText("" + (cal.get(Calendar.MONTH) + 1));
     	calculate();
 	}
     
@@ -72,11 +72,13 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 
 	protected void calculate() {
 		try {
-    		Date date = df.parse(dateTxt.getText().toString());
-        	long jdn = jdcalc.getJDN(date, bcChkBox.isChecked(), jcChkBox.isChecked());
+    		int year = Integer.parseInt(yearTxt.getText().toString());
+    		int month = Integer.parseInt(monthTxt.getText().toString());
+    		int day = Integer.parseInt(dayTxt.getText().toString());
+        	long jdn = jdcalc.getJDN(year, month, day, bcChkBox.isChecked(), jcChkBox.isChecked());
         	outView.setText("" + jdn);
     	}
-    	catch(ParseException exc) {
+    	catch(NumberFormatException exc) {
     		Log.d(TAG, "invalid date!!!");
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
     		builder.setMessage(R.string.invalid_date)
@@ -100,12 +102,9 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 
 	@Override
 	public void setDate(int year, int month, int day) {
-		Calendar cal = Calendar.getInstance();
-    	cal.set(Calendar.YEAR, year);
-    	cal.set(Calendar.MONTH, month);
-    	cal.set(Calendar.DATE, day);
-    	String date = df.format(cal.getTime());
-    	dateTxt.setText(date);
+    	yearTxt.setText("" + year);
+    	dayTxt.setText("" + day);
+    	monthTxt.setText("" + (month + 1));
 		calculate();
 	}
 	
@@ -132,11 +131,13 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     public void reverseCalculate(View view) {
 		try {
 			Long jdn = Long.parseLong(outView.getText().toString());
-			Calendar cal = jdcalc.getDate(jdn, jcChkBox.isChecked());
-			Log.d(TAG, cal.get(Calendar.YEAR) + "/" + cal.get(Calendar.MONTH) + "/" + cal.get(Calendar.DATE));
-			Log.d(TAG, "BC? " + (GregorianCalendar.BC == cal.get(Calendar.ERA)));
-			bcChkBox.setChecked(GregorianCalendar.BC == cal.get(Calendar.ERA));
-			dateTxt.setText(df.format(cal.getTime()));
+			Date date = jdcalc.getDate(jdn, jcChkBox.isChecked());
+			Log.d(TAG, date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
+			Log.d(TAG, "BC? " + (Date.BC == date.getEra()));
+			bcChkBox.setChecked(Date.BC == date.getEra());
+			yearTxt.setText("" + date.getYear());
+			monthTxt.setText("" + date.getMonth());
+			dayTxt.setText("" + date.getDay());
     	}
     	catch(NumberFormatException exc) {
     		Log.d(TAG, "invalid JDN!!!");
