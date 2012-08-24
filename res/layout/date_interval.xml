@@ -13,16 +13,6 @@
         android:layout_centerVertical="true"
         android:text="@string/from_date" />
 
-    <ImageButton
-        android:id="@+id/pickButton1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/textView1"
-        android:onClick="showFromDatePicker"
-        android:contentDescription="@string/calendar"
-        android:src="@drawable/calendar" />
-
 </RelativeLayout>   
 
 <RelativeLayout android:layout_width="fill_parent"
@@ -53,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/fromSlash1"
-        android:ems="4"
+        android:ems="2"
         android:inputType="number" 
         android:lines="1"
         android:maxLines="1" />
@@ -71,11 +61,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/fromSlash2"
-        android:ems="4"
+        android:ems="2"
         android:inputType="number" 
         android:lines="1"
         android:maxLines="1" />
     
+    <ImageButton
+        android:id="@+id/pickButton1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/fromDayTxt"
+        android:onClick="showFromDatePicker"
+        android:contentDescription="@string/calendar"
+        android:src="@drawable/calendar" />
+
 </RelativeLayout>   
 
 <RelativeLayout android:layout_width="fill_parent"
@@ -112,16 +112,6 @@
         android:layout_centerVertical="true"
         android:text="@string/to_date" />
 
-    <ImageButton
-        android:id="@+id/pickButton2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/textView2"
-        android:onClick="showToDatePicker"
-        android:contentDescription="@string/calendar"
-        android:src="@drawable/calendar" />
-
 </RelativeLayout>   
 
 <RelativeLayout android:layout_width="fill_parent"
@@ -149,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/toSlash1"
-        android:ems="4"
+        android:ems="2"
         android:inputType="number" 
         android:lines="1"
         android:maxLines="1" />
@@ -167,11 +157,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/toSlash2"
-        android:ems="4"
+        android:ems="2"
         android:inputType="number" 
         android:lines="1"
         android:maxLines="1" />
     
+    <ImageButton
+        android:id="@+id/pickButton2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/toDayTxt"
+        android:onClick="showToDatePicker"
+        android:contentDescription="@string/calendar"
+        android:src="@drawable/calendar" />
+
 </RelativeLayout>   
 
 <RelativeLayout android:layout_width="fill_parent"

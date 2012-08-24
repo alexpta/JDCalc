@@ -69,7 +69,7 @@ public class DateIntervalActivity extends FragmentActivity {
     public void subtract(View view) {
     	long jdn0 = 0;
     	long jdn1 = 0;
-		try {
+		try {			
     		int year = Integer.parseInt(fromYear.getText().toString());
     		int month = Integer.parseInt(fromMonth.getText().toString());
     		int day = Integer.parseInt(fromDay.getText().toString());
