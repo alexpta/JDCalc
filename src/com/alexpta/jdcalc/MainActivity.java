@@ -96,6 +96,16 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     
     public void showDatePicker(View view) {
     	DatePickerFragment newFragment = new DatePickerFragment();
+    	Bundle bundle = new Bundle();
+    	try {
+    		bundle.putInt(DatePickerFragment.YEAR_PARAM, Integer.parseInt(yearTxt.getText().toString()));
+    		bundle.putInt(DatePickerFragment.MONTH_PARAM, Integer.parseInt(monthTxt.getText().toString()) - 1);
+    		bundle.putInt(DatePickerFragment.DAY_PARAM, Integer.parseInt(dayTxt.getText().toString()));
+    	}
+    	catch(NumberFormatException exc) {
+    		// ignore
+    	}
+    	newFragment.setArguments(bundle);
     	newFragment.setClient(this);
         newFragment.show(getSupportFragmentManager(), "datePicker");    	
     }

@@ -117,6 +117,17 @@ public class DateIntervalActivity extends FragmentActivity {
     
     public void showFromDatePicker(View view) {
     	DatePickerFragment newFragment = new DatePickerFragment();
+    	Bundle bundle = new Bundle();
+    	try {
+    		bundle.putInt(DatePickerFragment.YEAR_PARAM, Integer.parseInt(fromYear.getText().toString()));
+    		bundle.putInt(DatePickerFragment.MONTH_PARAM, Integer.parseInt(fromMonth.getText().toString()) - 1);
+    		bundle.putInt(DatePickerFragment.DAY_PARAM, Integer.parseInt(fromDay.getText().toString()));
+    	}
+    	catch(NumberFormatException exc) {
+    		// ignore
+    	}
+    	newFragment.setArguments(bundle);
+
     	newFragment.setClient(new DatePickerClient() {
 			
 			@Override
@@ -131,6 +142,17 @@ public class DateIntervalActivity extends FragmentActivity {
 
     public void showToDatePicker(View view) {
     	DatePickerFragment newFragment = new DatePickerFragment();
+    	Bundle bundle = new Bundle();
+    	try {
+    		bundle.putInt(DatePickerFragment.YEAR_PARAM, Integer.parseInt(toYear.getText().toString()));
+    		bundle.putInt(DatePickerFragment.MONTH_PARAM, Integer.parseInt(toMonth.getText().toString()) - 1);
+    		bundle.putInt(DatePickerFragment.DAY_PARAM, Integer.parseInt(toDay.getText().toString()));
+    	}
+    	catch(NumberFormatException exc) {
+    		// ignore
+    	}
+    	newFragment.setArguments(bundle);
+
     	newFragment.setClient(new DatePickerClient() {
 			
 			@Override

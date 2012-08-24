@@ -79,6 +79,17 @@ public class Gregorian2JulianActivity extends FragmentActivity {
     
     public void showGDatePicker(View view) {
     	DatePickerFragment newFragment = new DatePickerFragment();
+    	Bundle bundle = new Bundle();
+    	try {
+    		bundle.putInt(DatePickerFragment.YEAR_PARAM, Integer.parseInt(gYear.getText().toString()));
+    		bundle.putInt(DatePickerFragment.MONTH_PARAM, Integer.parseInt(gMonth.getText().toString()) - 1);
+    		bundle.putInt(DatePickerFragment.DAY_PARAM, Integer.parseInt(gDay.getText().toString()));
+    	}
+    	catch(NumberFormatException exc) {
+    		// ignore
+    	}
+    	newFragment.setArguments(bundle);
+
     	newFragment.setClient(new DatePickerClient() {
 			
 			@Override
@@ -94,6 +105,17 @@ public class Gregorian2JulianActivity extends FragmentActivity {
 
     public void showJDatePicker(View view) {
     	DatePickerFragment newFragment = new DatePickerFragment();
+    	Bundle bundle = new Bundle();
+    	try {
+    		bundle.putInt(DatePickerFragment.YEAR_PARAM, Integer.parseInt(jYear.getText().toString()));
+    		bundle.putInt(DatePickerFragment.MONTH_PARAM, Integer.parseInt(jMonth.getText().toString()) - 1);
+    		bundle.putInt(DatePickerFragment.DAY_PARAM, Integer.parseInt(jDay.getText().toString()));
+    	}
+    	catch(NumberFormatException exc) {
+    		// ignore
+    	}
+    	newFragment.setArguments(bundle);
+
     	newFragment.setClient(new DatePickerClient() {
 			
 			@Override
