@@ -90,7 +90,5 @@ public class WeekDayActivity extends MainActivity {
                 return super.onOptionsItemSelected(item);
         }
 	}
-	
-	
-    
+   
 }
