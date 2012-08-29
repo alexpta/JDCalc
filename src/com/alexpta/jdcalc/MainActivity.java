@@ -29,6 +29,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 	protected EditText yearTxt;
 	protected EditText monthTxt;
 	protected EditText dayTxt;
+	protected DateValidator validator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
         bcChkBox = (CheckBox)findViewById(R.id.bcChkBox);
         jcChkBox = (CheckBox)findViewById(R.id.jcChkBox);
         jdcalc = new JDCalculator();
+        validator = new DateValidator();
         today();
     }
     
@@ -75,8 +77,13 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     		int year = Integer.parseInt(yearTxt.getText().toString());
     		int month = Integer.parseInt(monthTxt.getText().toString());
     		int day = Integer.parseInt(dayTxt.getText().toString());
-        	long jdn = jdcalc.getJDN(year, month, day, bcChkBox.isChecked(), jcChkBox.isChecked());
-        	outView.setText("" + jdn);
+    		if(validator.validate(year, month, day)) {
+    			long jdn = jdcalc.getJDN(year, month, day, bcChkBox.isChecked(), jcChkBox.isChecked());
+    			outView.setText("" + jdn);
+    		}
+    		else {
+    			throw new NumberFormatException();
+    		}
     	}
     	catch(NumberFormatException exc) {
     		Log.d(TAG, "invalid date!!!");
@@ -140,7 +147,10 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     
     public void reverseCalculate(View view) {
 		try {
-			Long jdn = Long.parseLong(outView.getText().toString());
+			long jdn = Long.parseLong(outView.getText().toString());
+			if(jdn < 0) {
+				throw new NumberFormatException();
+			}
 			Date date = jdcalc.getDate(jdn, jcChkBox.isChecked());
 			Log.d(TAG, date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
 			Log.d(TAG, "BC? " + (Date.BC == date.getEra()));

@@ -33,6 +33,9 @@ public class WeekDayActivity extends MainActivity {
     		int year = Integer.parseInt(yearTxt.getText().toString());
     		int month = Integer.parseInt(monthTxt.getText().toString());
     		int day = Integer.parseInt(dayTxt.getText().toString());
+    		if(!validator.validate(year, month, day)) {
+    			throw new NumberFormatException();
+    		}
         	long jdn = jdcalc.getJDN(year, month, day, bcChkBox.isChecked(), jcChkBox.isChecked());
         	int weekday = (int)(jdn % 7);
         	String dayNumber = null;

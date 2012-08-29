@@ -30,12 +30,14 @@ public class Gregorian2JulianActivity extends FragmentActivity {
 	private EditText jYear;
 	private EditText jMonth;
 	private EditText jDay;
+	private DateValidator validator;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gregorian2julian);
         jdcalc = new JDCalculator();
+        validator = new DateValidator();
         gYear = (EditText)findViewById(R.id.gYearTxt);
         gMonth = (EditText)findViewById(R.id.gMonthTxt);
         gDay = (EditText)findViewById(R.id.gDayTxt);
@@ -142,6 +144,9 @@ public class Gregorian2JulianActivity extends FragmentActivity {
     		int year = Integer.parseInt(gYear.getText().toString());
     		int month = Integer.parseInt(gMonth.getText().toString());
     		int day = Integer.parseInt(gDay.getText().toString());
+    		if(!validator.validate(year, month, day)) {
+    			throw new NumberFormatException();
+    		}
         	long jdn = jdcalc.getJDN(year, month, day, bcGChkBox.isChecked(), false);
         	Date date = jdcalc.getDate(jdn, true);
 			Log.d(TAG, date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
@@ -172,6 +177,9 @@ public class Gregorian2JulianActivity extends FragmentActivity {
     		int year = Integer.parseInt(jYear.getText().toString());
     		int month = Integer.parseInt(jMonth.getText().toString());
     		int day = Integer.parseInt(jDay.getText().toString());
+    		if(!validator.validate(year, month, day)) {
+    			throw new NumberFormatException();
+    		}
         	long jdn = jdcalc.getJDN(year, month, day, bcJChkBox.isChecked(), true);
         	Date date = jdcalc.getDate(jdn, false);
 			Log.d(TAG, date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
