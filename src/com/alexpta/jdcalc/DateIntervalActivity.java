@@ -9,7 +9,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,12 +16,11 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-public class DateIntervalActivity extends FragmentActivity {
+public class DateIntervalActivity extends JDCalcBaseActivity {
 	
 	private static final String TAG = "JDCALC.DateIntervalActivity";
 
 	private EditText outTxt;
-	private JDCalculator jdcalc;
 	private CheckBox bcFrom;
 	private CheckBox bcTo;
 	private CheckBox jcFrom;
@@ -33,7 +31,6 @@ public class DateIntervalActivity extends FragmentActivity {
 	private EditText toYear;
 	private EditText toMonth;
 	private EditText toDay;
-	private DateValidator validator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,12 +43,10 @@ public class DateIntervalActivity extends FragmentActivity {
         toMonth = (EditText)findViewById(R.id.toMonthTxt);
         toDay = (EditText)findViewById(R.id.toDayTxt);
         outTxt = (EditText)findViewById(R.id.outText);
-        jdcalc = new JDCalculator();
         bcFrom = (CheckBox)findViewById(R.id.bcFrom);
         bcTo = (CheckBox)findViewById(R.id.bcTo);
         jcFrom = (CheckBox)findViewById(R.id.jcFrom);
         jcTo = (CheckBox)findViewById(R.id.jcTo);
-        validator = new DateValidator();
         // set today date
 		Calendar cal = Calendar.getInstance();
     	fromYear.setText("" + cal.get(Calendar.YEAR));
@@ -75,10 +70,10 @@ public class DateIntervalActivity extends FragmentActivity {
     		int year = Integer.parseInt(fromYear.getText().toString());
     		int month = Integer.parseInt(fromMonth.getText().toString());
     		int day = Integer.parseInt(fromDay.getText().toString());
-    		if(!validator.validate(year, month, day)) {
+    		if(!getDateValidator().validate(year, month, day)) {
     			throw new NumberFormatException();
     		}
-        	jdn0 = jdcalc.getJDN(year, month, day, bcFrom.isChecked(), jcFrom.isChecked());
+        	jdn0 = getJDCalc().getJDN(year, month, day, bcFrom.isChecked(), jcFrom.isChecked());
     	}
     	catch(NumberFormatException exc) {
     		Log.d(TAG, "invalid date!!!");
@@ -100,10 +95,10 @@ public class DateIntervalActivity extends FragmentActivity {
     		int year = Integer.parseInt(toYear.getText().toString());
     		int month = Integer.parseInt(toMonth.getText().toString());
     		int day = Integer.parseInt(toDay.getText().toString());
-    		if(!validator.validate(year, month, day)) {
+    		if(!getDateValidator().validate(year, month, day)) {
     			throw new NumberFormatException();
     		}
-        	jdn1 = jdcalc.getJDN(year, month, day, bcTo.isChecked(), jcTo.isChecked());
+        	jdn1 = getJDCalc().getJDN(year, month, day, bcTo.isChecked(), jcTo.isChecked());
         	long diff = Math.abs(jdn1 - jdn0);
         	outTxt.setText("" + diff);
     	}

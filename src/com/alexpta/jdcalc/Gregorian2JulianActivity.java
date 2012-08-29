@@ -15,13 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.support.v4.app.FragmentActivity;
 
-public class Gregorian2JulianActivity extends FragmentActivity {
+public class Gregorian2JulianActivity extends JDCalcBaseActivity {
 
 	private static final String TAG = "JDCALC.Gregorian2JulianActivity";
 	
-	private JDCalculator jdcalc;
 	private CheckBox bcGChkBox;
 	private CheckBox bcJChkBox;
 	private EditText gYear;
@@ -30,14 +28,11 @@ public class Gregorian2JulianActivity extends FragmentActivity {
 	private EditText jYear;
 	private EditText jMonth;
 	private EditText jDay;
-	private DateValidator validator;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gregorian2julian);
-        jdcalc = new JDCalculator();
-        validator = new DateValidator();
         gYear = (EditText)findViewById(R.id.gYearTxt);
         gMonth = (EditText)findViewById(R.id.gMonthTxt);
         gDay = (EditText)findViewById(R.id.gDayTxt);
@@ -144,11 +139,11 @@ public class Gregorian2JulianActivity extends FragmentActivity {
     		int year = Integer.parseInt(gYear.getText().toString());
     		int month = Integer.parseInt(gMonth.getText().toString());
     		int day = Integer.parseInt(gDay.getText().toString());
-    		if(!validator.validate(year, month, day)) {
+    		if(!getDateValidator().validate(year, month, day)) {
     			throw new NumberFormatException();
     		}
-        	long jdn = jdcalc.getJDN(year, month, day, bcGChkBox.isChecked(), false);
-        	Date date = jdcalc.getDate(jdn, true);
+        	long jdn = getJDCalc().getJDN(year, month, day, bcGChkBox.isChecked(), false);
+        	Date date = getJDCalc().getDate(jdn, true);
 			Log.d(TAG, date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
 			Log.d(TAG, "BC? " + (Date.BC == date.getEra()));
 			bcJChkBox.setChecked(Date.BC == date.getEra());
@@ -177,11 +172,11 @@ public class Gregorian2JulianActivity extends FragmentActivity {
     		int year = Integer.parseInt(jYear.getText().toString());
     		int month = Integer.parseInt(jMonth.getText().toString());
     		int day = Integer.parseInt(jDay.getText().toString());
-    		if(!validator.validate(year, month, day)) {
+    		if(!getDateValidator().validate(year, month, day)) {
     			throw new NumberFormatException();
     		}
-        	long jdn = jdcalc.getJDN(year, month, day, bcJChkBox.isChecked(), true);
-        	Date date = jdcalc.getDate(jdn, false);
+        	long jdn = getJDCalc().getJDN(year, month, day, bcJChkBox.isChecked(), true);
+        	Date date = getJDCalc().getDate(jdn, false);
 			Log.d(TAG, date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
 			Log.d(TAG, "BC? " + (Date.BC == date.getEra()));
 			bcGChkBox.setChecked(Date.BC == date.getEra());

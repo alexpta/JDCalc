@@ -10,7 +10,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,18 +17,16 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-public class MainActivity extends FragmentActivity implements DatePickerClient {
+public class MainActivity extends JDCalcBaseActivity implements DatePickerClient {
 	
 	private static final String TAG = "JDCALC.MainActivity";
 	
 	protected EditText outView;
-	protected JDCalculator jdcalc;
 	protected CheckBox bcChkBox;
 	protected CheckBox jcChkBox;
 	protected EditText yearTxt;
 	protected EditText monthTxt;
 	protected EditText dayTxt;
-	protected DateValidator validator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,8 +38,6 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
         dayTxt = (EditText)findViewById(R.id.dayTxt);
         bcChkBox = (CheckBox)findViewById(R.id.bcChkBox);
         jcChkBox = (CheckBox)findViewById(R.id.jcChkBox);
-        jdcalc = new JDCalculator();
-        validator = new DateValidator();
         today();
     }
     
@@ -77,8 +72,8 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
     		int year = Integer.parseInt(yearTxt.getText().toString());
     		int month = Integer.parseInt(monthTxt.getText().toString());
     		int day = Integer.parseInt(dayTxt.getText().toString());
-    		if(validator.validate(year, month, day)) {
-    			long jdn = jdcalc.getJDN(year, month, day, bcChkBox.isChecked(), jcChkBox.isChecked());
+    		if(getDateValidator().validate(year, month, day)) {
+    			long jdn = getJDCalc().getJDN(year, month, day, bcChkBox.isChecked(), jcChkBox.isChecked());
     			outView.setText("" + jdn);
     		}
     		else {
@@ -151,7 +146,7 @@ public class MainActivity extends FragmentActivity implements DatePickerClient {
 			if(jdn < 0) {
 				throw new NumberFormatException();
 			}
-			Date date = jdcalc.getDate(jdn, jcChkBox.isChecked());
+			Date date = getJDCalc().getDate(jdn, jcChkBox.isChecked());
 			Log.d(TAG, date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
 			Log.d(TAG, "BC? " + (Date.BC == date.getEra()));
 			bcChkBox.setChecked(Date.BC == date.getEra());
