@@ -17,61 +17,94 @@
 
 <RelativeLayout android:layout_width="fill_parent"
       android:layout_height="wrap_content">
-
-    <EditText
-        android:id="@+id/gYearTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="4"
-        android:inputType="number" 
-        android:lines="1"
-        android:maxLines="1" >
-
-        <requestFocus />
-    </EditText>
     
-    <TextView
-        android:id="@+id/gSlash1"
+    <RelativeLayout android:id="@+id/gYearLayout" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content">
+              
+        <EditText android:id="@+id/gYearTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number" 
+            android:lines="1"
+            android:maxLines="1">
+    
+            <requestFocus />
+        </EditText>
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gYearTxt"
+            android:text="@string/year"
+            android:layout_centerHorizontal="true" />
+    
+    </RelativeLayout>
+    
+    <TextView  android:id="@+id/gSlash1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gYearTxt"
+        android:layout_toRightOf="@+id/gYearLayout"
         android:text="@string/slash" 
         android:layout_centerVertical="true" />
     
-    <EditText
-        android:id="@+id/gMonthTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gSlash1"
-        android:ems="2"
-        android:inputType="number" 
-        android:lines="1"
-        android:maxLines="1" />
+    <RelativeLayout android:id="@+id/gMonthLayout" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/gSlash1" >
+    
+        <EditText android:id="@+id/gMonthTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:inputType="number" 
+            android:lines="1"
+            android:maxLines="1" />
 
-    <TextView
-        android:id="@+id/gSlash2"
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gMonthTxt"
+            android:text="@string/month"
+            android:layout_centerHorizontal="true" />
+    
+    </RelativeLayout>
+
+    <TextView android:id="@+id/gSlash2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gMonthTxt"
+        android:layout_toRightOf="@+id/gMonthLayout"
         android:text="@string/slash" 
         android:layout_centerVertical="true" />
     
-    <EditText
-        android:id="@+id/gDayTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gSlash2"
-        android:ems="2"
-        android:inputType="number" 
-        android:lines="1"
-        android:maxLines="1" />
+    <RelativeLayout android:id="@+id/gDayLayout" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/gSlash2" >
+
+        <EditText android:id="@+id/gDayTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:inputType="number" 
+            android:lines="1"
+            android:maxLines="1" />
     
-    <ImageButton
-        android:id="@+id/button3"
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gDayTxt"
+            android:text="@string/day"
+            android:layout_centerHorizontal="true" />
+        
+        </RelativeLayout>
+    
+    <ImageButton android:id="@+id/pickButton1"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/gDayTxt"
+        android:layout_toRightOf="@+id/gDayLayout"
         android:onClick="showGDatePicker"
         android:contentDescription="@string/calendar"
         android:src="@drawable/calendar" />
@@ -125,61 +158,91 @@
 
 <RelativeLayout android:layout_width="fill_parent"
       android:layout_height="wrap_content">
-
-    <EditText
-        android:id="@+id/jYearTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="4"
-        android:inputType="number" 
-        android:lines="1"
-        android:maxLines="1" >
-
-        <requestFocus />
-    </EditText>
     
-    <TextView
-        android:id="@+id/jSlash1"
+    <RelativeLayout android:id="@+id/jYearLayout" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content">
+              
+        <EditText android:id="@+id/jYearTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number" 
+            android:lines="1"
+            android:maxLines="1" />
+    
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/jYearTxt"
+            android:text="@string/year"
+            android:layout_centerHorizontal="true" />
+    
+    </RelativeLayout>
+    
+    <TextView  android:id="@+id/jSlash1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/jYearTxt"
+        android:layout_toRightOf="@+id/jYearLayout"
         android:text="@string/slash" 
         android:layout_centerVertical="true" />
     
-    <EditText
-        android:id="@+id/jMonthTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/jSlash1"
-        android:ems="2"
-        android:inputType="number" 
-        android:lines="1"
-        android:maxLines="1" />
+    <RelativeLayout android:id="@+id/jMonthLayout" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/jSlash1" >
+    
+        <EditText android:id="@+id/jMonthTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:inputType="number" 
+            android:lines="1"
+            android:maxLines="1" />
 
-    <TextView
-        android:id="@+id/jSlash2"
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/jMonthTxt"
+            android:text="@string/month"
+            android:layout_centerHorizontal="true" />
+    
+    </RelativeLayout>
+
+    <TextView android:id="@+id/jSlash2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/jMonthTxt"
+        android:layout_toRightOf="@+id/jMonthLayout"
         android:text="@string/slash" 
         android:layout_centerVertical="true" />
     
-    <EditText
-        android:id="@+id/jDayTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/jSlash2"
-        android:ems="2"
-        android:inputType="number" 
-        android:lines="1"
-        android:maxLines="1" />
+    <RelativeLayout android:id="@+id/jDayLayout" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content"
+              android:layout_toRightOf="@+id/jSlash2" >
+
+        <EditText android:id="@+id/jDayTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:inputType="number" 
+            android:lines="1"
+            android:maxLines="1" />
     
-    <ImageButton
-        android:id="@+id/button4"
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/jDayTxt"
+            android:text="@string/day"
+            android:layout_centerHorizontal="true" />
+        
+        </RelativeLayout>
+    
+    <ImageButton android:id="@+id/pickButto2"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/jDayTxt"
+        android:layout_toRightOf="@+id/jDayLayout"
         android:onClick="showJDatePicker"
         android:contentDescription="@string/calendar"
         android:src="@drawable/calendar" />

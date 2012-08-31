@@ -2,11 +2,11 @@
 
     <string name="app_name">Калькулятор Юлианских дней</string>
     <string name="title_activity_main">Юлианские дни</string>
-    <string name="date">Дата</string>
+    <string name="date">Дата:</string>
     <string name="today_date">Сегодня</string>
     <string name="calculate">Вычислить</string>
     <string name="reverse">Обратный расчет</string>
-    <string name="jdn">Номер юлианского дня (JDN)</string>
+    <string name="jdn">Номер юлианского дня (JDN):</string>
     <string name="jdn_calc">Калькулятор Юлианских дней</string>
     <string name="date_interval">Разница между датами</string>
     <string name="invalid_date">Неправильная дата!</string>
@@ -17,8 +17,8 @@
     <string name="error_dlg_title">Ошибка</string>
     <string name="days">дней (дня)</string>
     <string name="title_activity_date_interval">Разница между датами</string>
-    <string name="from_date">Первая дата</string>
-    <string name="to_date">Вторая дата</string>
+    <string name="from_date">Первая дата:</string>
+    <string name="to_date">Вторая дата:</string>
     <string name="bc_label">до Н.Э.</string>
     <string name="jc_label">по старому стилю</string>
     <string name="title_activity_week_day">День недели</string>
@@ -37,4 +37,7 @@
     <string name="g2j_menu">Перевод дат из нового стилю в старый</string>
     <string name="invalid_gregorian_date">Дата по новому стилю задана неверно!</string>
     <string name="invalid_julian_date">Дата по старому стилю задана неверно!</string>
+    <string name="year">год</string>
+    <string name="month">месяц</string>
+    <string name="day">день</string>
 </resources>
