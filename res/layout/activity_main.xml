@@ -29,7 +29,8 @@
 	        android:ems="4"
 	        android:inputType="number" 
 	        android:lines="1"
-	        android:maxLines="1">
+	        android:maxLines="1"
+            android:imeOptions="actionNext" >
 	
 	        <requestFocus />
 	    </EditText>
@@ -61,7 +62,8 @@
 	        android:ems="2"
 	        android:inputType="number" 
 	        android:lines="1"
-	        android:maxLines="1" />
+	        android:maxLines="1"  
+	        android:imeOptions="actionNext"/>
 
         <TextView android:id="@+id/txtMonth"
             android:layout_width="wrap_content"
@@ -90,7 +92,8 @@
 	        android:ems="2"
 	        android:inputType="number" 
 	        android:lines="1"
-	        android:maxLines="1" />
+	        android:maxLines="1" 
+	        android:imeOptions="actionNext" />
     
         <TextView android:id="@+id/txtDay"
             android:layout_width="wrap_content"
@@ -184,7 +187,8 @@
         android:layout_toRightOf="@+id/txtView"
         android:ems="10"
         android:inputType="number"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:imeOptions="actionNext" />
     
 </RelativeLayout>    
 </LinearLayout>

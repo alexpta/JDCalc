@@ -28,7 +28,8 @@
             android:ems="4"
             android:inputType="number" 
             android:lines="1"
-            android:maxLines="1">
+            android:maxLines="1"
+            android:imeOptions="actionNext" >
     
             <requestFocus />
         </EditText>
@@ -60,7 +61,8 @@
             android:ems="2"
             android:inputType="number" 
             android:lines="1"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:imeOptions="actionNext" />
 
         <TextView 
             android:layout_width="wrap_content"
@@ -89,7 +91,8 @@
             android:ems="2"
             android:inputType="number" 
             android:lines="1"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:imeOptions="actionNext" />
     
         <TextView 
             android:layout_width="wrap_content"
@@ -169,7 +172,8 @@
             android:ems="4"
             android:inputType="number" 
             android:lines="1"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:imeOptions="actionNext" />
     
         <TextView 
             android:layout_width="wrap_content"
@@ -198,7 +202,8 @@
             android:ems="2"
             android:inputType="number" 
             android:lines="1"
-            android:maxLines="1" />
+            android:maxLines="1" 
+            android:imeOptions="actionNext"/>
 
         <TextView 
             android:layout_width="wrap_content"
@@ -227,7 +232,8 @@
             android:ems="2"
             android:inputType="number" 
             android:lines="1"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:imeOptions="actionNext" />
     
         <TextView 
             android:layout_width="wrap_content"
